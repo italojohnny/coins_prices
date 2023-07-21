@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "coins-prices"
+version = "0.1.0"
+description = ""
+authors = ["italojohnny <italojohnnydosanjos@gmail.com>"]
+readme = "readme.md"
+packages = [{include = "coins_prices"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
