@@ -1,7 +1,19 @@
 import requests
+from pydantic import BaseModel, Field
 from dateutil import parser
 from datetime import date
 
+
+class Currencies(BaseModel):
+    jpy: float = Field(..., alias='JPY')
+    eur: float = Field(..., alias='EUR')
+    brl: float = Field(..., alias='BRL')
+
+
+class VatResponse(BaseModel):
+    base: str
+    date: date
+    rates: Currencies
 
 
 def get_by_date(date_ref: date=date.today()):
@@ -14,11 +26,11 @@ def get_by_date(date_ref: date=date.today()):
     endpoint = f'https://api.vatcomply.com/rates?base=USD&date={date_ref}'
     response = requests.get(endpoint)
     response.raise_for_status()
-    raw = response.json()
+    vat = VatResponse(**response.json())
 
     return {
-        'date': raw['date'],
-        'brl': raw['rates']['BRL'],
-        'eur': raw['rates']['EUR'],
-        'jpy': raw['rates']['JPY'],
+        'date': vat.date,
+        'brl': vat.rates.brl,
+        'eur': vat.rates.eur,
+        'jpy': vat.rates.jpy,
     }
