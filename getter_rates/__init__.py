@@ -1,11 +1,15 @@
 import requests
+from dateutil import parser
 from datetime import date
 
 
 
 def get_by_date(date_ref: date=date.today()):
-    if not date_ref:
-        date_ref = date.today()
+    try:
+        date_ref = parser.parse(str(date_ref)).date()
+
+    except parser._parser.ParserError:
+        pass
 
     endpoint = f'https://api.vatcomply.com/rates?base=USD&date={date_ref}'
     response = requests.get(endpoint)
