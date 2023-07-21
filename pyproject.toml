@@ -9,6 +9,7 @@ packages = [{include = "coins_prices"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 django = "^4.2.3"
+requests = "^2.31.0"
 
 
 [build-system]
