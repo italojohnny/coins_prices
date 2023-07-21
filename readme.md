@@ -11,7 +11,7 @@ Projeto para guardar e exbir cotacoes dos moedas real, euro e iene em dolar.
     - [x] criar modulo para retornar dados
     - [ ] requisitar api externa
     - [ ] tratar retorno
-    - [ ] testar modulo
+    - [x] testar modulo
 - [ ] Persistir dados no banco
     - [ ] criar container postgres
     - [ ] criar model
