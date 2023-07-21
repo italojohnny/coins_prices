@@ -32,13 +32,13 @@ class GetterRatesTestCase(TestCase):
         today = date.today()
         tomorrow = today + timedelta(days=1)
         result = get_by_date(tomorrow)
-        self.assertEqual(str(today), result.get('date'), 'Data diferente do esperado')
+        self.assertEqual(today, result.get('date'), 'Data diferente do esperado')
 
 
     def test_good_string_date(self):
         today = str(date.today())
         result = get_by_date(today)
-        self.assertEqual(str(today), result.get('date'), 'Data diferente do esperado')
+        self.assertEqual(today, str(result.get('date')), 'Data diferente do esperado')
 
 
     def test_very_old_date(self):
