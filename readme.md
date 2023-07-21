@@ -3,7 +3,7 @@ Projeto para guardar e exbir cotacoes dos moedas real, euro e iene em dolar.
 
 
 ### Tarefas
-- [ ] Criar projeto basico
+- [x] Criar projeto basico
     - [x] iniciar repo git
     - [x] iniciar projeto poetry
     - [x] iniciar projeto django
