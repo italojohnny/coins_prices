@@ -7,7 +7,7 @@ Projeto para guardar e exbir cotacoes dos moedas real, euro e iene em dolar.
     - [x] iniciar repo git
     - [x] iniciar projeto poetry
     - [x] iniciar projeto django
-- [ ] Obter dados das cotacoes
+- [x] Obter dados das cotacoes
     - [x] criar modulo para retornar dados
     - [x] requisitar api externa
     - [x] tratar retorno
