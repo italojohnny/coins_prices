@@ -8,10 +8,10 @@ Projeto para guardar e exbir cotacoes dos moedas real, euro e iene em dolar.
     - [x] iniciar projeto poetry
     - [x] iniciar projeto django
 - [ ] Obter dados das cotacoes
-    - [ ] criar modulo para retornar dados
-    - [ ] requisitar api externa
-    - [ ] tratar retorno
-    - [ ] testar modulo
+    - [x] criar modulo para retornar dados
+    - [x] requisitar api externa
+    - [x] tratar retorno
+    - [x] testar modulo
 - [ ] Persistir dados no banco
     - [ ] criar container postgres
     - [ ] criar model
