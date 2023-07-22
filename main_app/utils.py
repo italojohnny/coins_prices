@@ -36,7 +36,7 @@ def get_date_range(date1, date2):
     return dates
 
 
-def get_rate(d, coin_name):
+def get_rate(coin_name, d):
     result = get_by_date(d)
     return {
         'date': result.get('date'),
