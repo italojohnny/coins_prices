@@ -1,6 +1,13 @@
 from pydantic import BaseModel, BaseSettings
 
 
+class MainAppConfig(BaseSettings):
+    date_range: int
+
+    class Config:
+        env_prefix = 'mainapp_'
+
+
 class ProjectConfig(BaseSettings):
     debug: bool
     secret: str
@@ -24,4 +31,5 @@ class PostgresConfig(BaseSettings):
 
 class Config(BaseModel):
     project: ProjectConfig = ProjectConfig()
+    main_app: MainAppConfig = MainAppConfig()
     postgres: PostgresConfig = PostgresConfig()
