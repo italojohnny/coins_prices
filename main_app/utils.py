@@ -1,6 +1,9 @@
 from getter_rates import get_by_date
 from datetime import date
+from coins_prices.config import Config
 
+config = Config()
+MAX_DATA_RANGE = config.main_app.date_range
 
 def get_rates(coin_name):
     return [
