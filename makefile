@@ -1,3 +1,6 @@
+default: help
+
+
 run: ## Executa projeto localmente
 	@poetry run python manage.py runserver
 
