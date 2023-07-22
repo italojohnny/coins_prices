@@ -12,15 +12,15 @@ Projeto para guardar e exbir cotacoes dos moedas real, euro e iene em dolar.
     - [x] requisitar api externa
     - [x] tratar retorno
     - [x] testar modulo
-- [ ] Persistir dados no banco
+- [x] Persistir dados no banco
     - [x] iniciar app django
     - [x] criar container postgres
+    - [x] criar view
+    - [x] criar template
     - [x] criar model
     - [x] testar model
     - [x] criar migrate
 - [ ] Exibir dados no front
-    - [ ] criar view
-    - [ ] criar template
     - [ ] exibir dados com highcharts
     - [ ] testar view
 - [ ] Adicionar form para consultar
