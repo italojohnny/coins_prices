@@ -1,16 +1,22 @@
+ENV_FILE=.env_dev
+
+
 default: help
 
 
 run: ## Executa projeto localmente
-	@poetry run python manage.py runserver
+	@export $$(cat ${ENV_FILE} | xargs); \
+	poetry run python manage.py runserver
 
 
 test: ## Executa testes do projeto
-	@poetry run python manage.py test
+	@export $$(cat ${ENV_FILE} | xargs); \
+	poetry run python manage.py test
 
 
 shell: ## Entra no ambiente virtual
-	@poetry shell
+	@export $$(cat ${ENV_FILE} | xargs); \
+	poetry shell
 
 
 dc_up: dc_down ## Executa containers docker
