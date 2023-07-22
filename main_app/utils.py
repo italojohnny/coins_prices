@@ -15,6 +15,10 @@ def get_rates(coin_name, date1=None, date2=None):
     '''
     obtem cotacoes de uma moeda em um determinado intervalo de datas
     '''
+    today = date.today()
+    date1 = date1 or date2 or today
+    date2 = date2 or date1 or today
+
     result = list()
     date_range = get_date_range(date1, date2)
     for d in date_range:
