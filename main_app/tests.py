@@ -60,3 +60,13 @@ class UtilsTestCase(TestCase):
         r = result[0]
         self.assertTrue(isinstance(r.get('date'), date))
         self.assertTrue(isinstance(r.get('value'), type(None)))
+
+    def test_get_rates_bad_date(self):
+        result = utils.get_rates(GOOD_COIN, BAD_DATE)
+        self.assertTrue(isinstance(result, list))
+        self.assertEqual(len(result), 1)
+
+        r = result[0]
+        self.assertTrue(isinstance(r.get('date'), date))
+        self.assertTrue(isinstance(r.get('value'), float))
+        self.assertNotEqual(r.get('date'), BAD_DATE)
