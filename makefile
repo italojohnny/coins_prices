@@ -1,12 +1,12 @@
-run:
+run: ## Executa projeto localmente
 	@poetry run python manage.py runserver
 
 
-test:
+test: ## Executa testes do projeto
 	@poetry run python manage.py test
 
 
-shell:
+shell: ## Entra no ambiente virtual
 	@poetry shell
 
 
