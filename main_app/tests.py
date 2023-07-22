@@ -75,3 +75,11 @@ class UtilsTestCase(TestCase):
         result = utils.get_rates(GOOD_COIN, *GOOD_DATE_RANGE)
         self.assertTrue(isinstance(result, list))
         self.assertEqual(len(result), 5)
+
+    def test_get_rates_bad_date_range(self):
+        self.assertRaises(
+            utils.InvalidDateRange,
+            utils.get_rates,
+            GOOD_DATE,
+            *BAD_DATE_RANGE,
+        )
