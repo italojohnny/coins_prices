@@ -1,4 +1,5 @@
 from django.test import TestCase
+from . import utils
 from .models import RateModel
 from datetime import date, timedelta
 
@@ -39,3 +40,14 @@ class RateModelTestCase(TestCase):
 
         self.assertNotEqual(first.brl, recovered.brl)
         self.assertEqual(latest.brl, recovered.brl)
+
+
+class UtilsTestCase(TestCase):
+    def test_get_rates_good_way(self):
+        result = utils.get_rates(GOOD_COIN, GOOD_DATE)
+        self.assertTrue(isinstance(result, list))
+        self.assertEqual(len(result), 1)
+
+        r = result[0]
+        self.assertTrue(isinstance(r.get('date'), date))
+        self.assertTrue(isinstance(r.get('value'), float))
