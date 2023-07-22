@@ -11,14 +11,12 @@ class InvalidDateRange(Exception):
         return 'Date range is invalid!'
 
 
-def get_rates(coin_name):
-    return [
-        get_rate(date(2023, 7, 17), coin_name),
-        get_rate(date(2023, 7, 18), coin_name),
-        get_rate(date(2023, 7, 19), coin_name),
-        get_rate(date(2023, 7, 20), coin_name),
-        get_rate(date(2023, 7, 21), coin_name),
-    ]
+def get_rates(coin_name, date1=None, date2=None):
+    result = list()
+    date_range = get_date_range(date1, date2)
+    for d in date_range:
+        result.append(get_rate(coin_name, d))
+    return result
 
 
 def get_date_range(date1, date2):
