@@ -13,6 +13,14 @@ shell: ## Entra no ambiente virtual
 	@poetry shell
 
 
+dc_up: dc_down ## Executa containers docker
+	@docker-compose -f docker/docker-compose.yml up -d --remove-orphans || true
+
+
+dc_down: ## Encerra containers docker
+	@docker-compose -f docker/docker-compose.yml down || true
+
+
 lint: lint_black lint_flake8 ## Analisa sintaxe e estilo
 
 
