@@ -16,7 +16,7 @@ class VatResponse(BaseModel):
     rates: Currencies
 
 
-def get_by_date(date_ref: date=date.today()):
+def get_by_date(date_ref: date = date.today()):
     try:
         date_ref = parser.parse(str(date_ref)).date()
 
