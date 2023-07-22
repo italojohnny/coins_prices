@@ -21,7 +21,7 @@ Projeto para guardar e exbir cotacoes dos moedas real, euro e iene em dolar.
     - [x] testar model
     - [x] criar migrate
 - [ ] Exibir dados no front
-    - [ ] exibir dados com highcharts
+    - [x] exibir dados com highcharts
     - [ ] testar view
 - [ ] Adicionar form para consultar
     - [ ] criar form

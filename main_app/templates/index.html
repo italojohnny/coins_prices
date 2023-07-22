@@ -3,33 +3,69 @@
 {% block title %}coins prices{% endblock %}
 
 {% block content %}
+<figure class="highcharts-figure">
+    <div id="container"></div>
+</figure>
+{% endblock %}
 
-<p>
-{% for item in rates %}
-    '{{ item.date|date:"Y-m-d" }}',
-{% endfor %}
-</p>
-<hr>
+{% block script %}
+<script>
+    Highcharts.chart('container', {
 
-<p>
-{% for item in rates %}
-    '{{ item.brl }}',
-{% endfor %}
-</p>
-<hr>
+    title: {
+        text: 'Coins Prices',
+        align: 'center'
+    },
 
-<p>
-{% for item in rates %}
-    '{{ item.eur }}',
-{% endfor %}
-</p>
-<hr>
+    subtitle: {
+        text: 'Valores para {{ coin|upper }}',
+        align: 'center'
+    },
 
-<p>
-{% for item in rates %}
-    '{{ item.jpy }}',
-{% endfor %}
-</p>
-<hr>
+    yAxis: {
+        title: {
+            text: 'Preço por dolar'
+        }
+    },
 
+    xAxis: {
+        categories: [
+            {% for item in rates %}
+                '{{ item.date|date:"d/m/Y" }}',
+            {% endfor %}
+        ]
+    },
+
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+    series: [{
+        name: '{{ coin|upper }}',
+        data: [
+            {% load l10n %}
+            {% for item in rates %}
+                {{ item.value|stringformat:".2f"|unlocalize }},
+            {% endfor %}
+        ]
+    }],
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+});
+</script>
 {% endblock %}
