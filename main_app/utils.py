@@ -12,6 +12,9 @@ class InvalidDateRange(Exception):
 
 
 def get_rates(coin_name, date1=None, date2=None):
+    '''
+    obtem cotacoes de uma moeda em um determinado intervalo de datas
+    '''
     result = list()
     date_range = get_date_range(date1, date2)
     for d in date_range:
@@ -37,6 +40,9 @@ def get_date_range(date1, date2):
 
 
 def get_rate(coin_name, d):
+    '''
+    obtem cotacao de uma moeda em uma determinada data
+    '''
     result = get_by_date(d)
     return {
         'date': result.get('date'),
