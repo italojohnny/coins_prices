@@ -1,6 +1,18 @@
 from django.test import TestCase
 from .models import RateModel
-from datetime import date
+from datetime import date, timedelta
+
+
+GOOD_COIN = 'brl'
+BAD_COIN = 'xxx'
+
+MONDAY = date(2023, 7, 17)
+FRIDAY = date(2023, 7, 21)
+SUNDAY = date(2023, 7, 16)
+GOOD_DATE = MONDAY
+BAD_DATE = SUNDAY
+GOOD_DATE_RANGE = (MONDAY, FRIDAY)
+BAD_DATE_RANGE = (MONDAY, MONDAY + timedelta(days=30))
 
 
 class RateModelTestCase(TestCase):
