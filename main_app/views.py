@@ -1,9 +1,9 @@
 from django.shortcuts import render
+from main_app import utils
 
 
-# Create your views here.
 def index(request):
     context = {
-        'message': 'hello world',
+        'rates': utils.get_rates(),
     }
     return render(request, 'index.html', context)

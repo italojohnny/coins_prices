@@ -3,5 +3,33 @@
 {% block title %}coins prices{% endblock %}
 
 {% block content %}
-<h1>{{ message }}</h1>
+
+<p>
+{% for item in rates %}
+    '{{ item.date|date:"Y-m-d" }}',
+{% endfor %}
+</p>
+<hr>
+
+<p>
+{% for item in rates %}
+    '{{ item.brl }}',
+{% endfor %}
+</p>
+<hr>
+
+<p>
+{% for item in rates %}
+    '{{ item.eur }}',
+{% endfor %}
+</p>
+<hr>
+
+<p>
+{% for item in rates %}
+    '{{ item.jpy }}',
+{% endfor %}
+</p>
+<hr>
+
 {% endblock %}
