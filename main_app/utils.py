@@ -5,6 +5,12 @@ from coins_prices.config import Config
 config = Config()
 MAX_DATA_RANGE = config.main_app.date_range
 
+
+class InvalidDateRange(Exception):
+    def __str__(self):
+        return 'Date range is invalid!'
+
+
 def get_rates(coin_name):
     return [
         get_rate(date(2023, 7, 17), coin_name),
