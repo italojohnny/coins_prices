@@ -19,6 +19,10 @@ shell: ## Entra no ambiente virtual
 	poetry shell
 
 
+requirements: ## Gera arquivo de dependencias do projeto
+	@poetry export --without-hashes > requirements.txt
+
+
 dc_up: dc_down ## Executa containers docker
 	@docker-compose -f docker/docker-compose.yml up -d --remove-orphans || true
 
