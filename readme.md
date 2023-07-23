@@ -6,6 +6,10 @@ Projeto para guardar e exbir cotacoes dos moedas real, euro e iene em dolar.
 https://coins-prices.onrender.com/
 
 
+### API
+https://coins-prices.onrender.com/api/rates
+
+
 ### Tarefas
 - [x] Criar projeto basico
     - [x] iniciar repo git

@@ -67,11 +67,14 @@ def get_rate(coin_name, d):
     '''
     obtem cotacao de uma moeda em uma determinada data
     '''
+    try:
+        result = get_rate_from_database(coin_name, d)
+        if not result:
+            result = get_by_date(d)
+            set_rate_in_database(result)
 
-    result = get_rate_from_database(coin_name, d)
-    if not result:
-        result = get_by_date(d)
-        set_rate_in_database(result)
+    except Exception:
+        result = dict()
 
     return {
         'date': result.get('date'),
