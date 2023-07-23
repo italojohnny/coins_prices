@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'coins_prices',
     'main_app',
+    'api',
 ]
 
 MIDDLEWARE = [
