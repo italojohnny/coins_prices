@@ -1,6 +1,7 @@
 from django.test import TestCase
 from . import utils
 from .models import RateModel
+from .forms import FormIndex
 from datetime import date, timedelta
 
 
@@ -83,3 +84,23 @@ class UtilsTestCase(TestCase):
             GOOD_DATE,
             *BAD_DATE_RANGE,
         )
+
+
+class FormIndexTestCase(TestCase):
+    def test_good_case(self):
+        form_data = {
+            'begin': GOOD_DATE_RANGE[0],
+            'end': GOOD_DATE_RANGE[1],
+            'coin': GOOD_COIN,
+        }
+        form = FormIndex(data=form_data)
+        self.assertTrue(form.is_valid())
+
+    def test_bad_case(self):
+        form_data = {
+            'begin': BAD_DATE_RANGE[0],
+            'end': BAD_DATE_RANGE[1],
+            'coin': BAD_COIN,
+        }
+        form = FormIndex(data=form_data)
+        self.assertFalse(form.is_valid())
