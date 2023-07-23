@@ -30,3 +30,7 @@ class FormIndex(forms.Form):
         diff = abs(d1 - d2).days + 1
         if diff > utils.MAX_DATA_RANGE:
             return True
+
+    def is_coin_invalid(self, coin):
+        if coin not in utils.COINS_ALLOWED:
+            return True
