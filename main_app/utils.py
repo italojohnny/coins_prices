@@ -82,3 +82,15 @@ def get_rate_from_database(coin_name, d):
     if result:
         return result.__dict__
     return None
+
+
+def set_rate_in_database(rate):
+    '''
+    salva cotacao no banco cotacao
+    '''
+    defaults = rate.copy()
+    defaults.pop('date', None)
+    return RateModel.objects.update_or_create(
+        date=rate.get('date'),
+        defaults=defaults,
+    )
