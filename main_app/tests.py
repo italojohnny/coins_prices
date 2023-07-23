@@ -16,6 +16,7 @@ GOOD_DATE = MONDAY
 BAD_DATE = SUNDAY
 GOOD_DATE_RANGE = (MONDAY, FRIDAY)
 BAD_DATE_RANGE = (MONDAY, MONDAY + timedelta(days=30))
+OLD_DATE_RANGE = (date(1500, 1, 1), date(1500, 1, 5))
 GOOD_FORM = {
     'begin': GOOD_DATE_RANGE[0],
     'end': GOOD_DATE_RANGE[1],
@@ -25,6 +26,11 @@ BAD_FORM = {
     'begin': BAD_DATE_RANGE[0],
     'end': BAD_DATE_RANGE[1],
     'coin': BAD_COIN,
+}
+OLD_FORM = {
+    'begin': OLD_DATE_RANGE[0],
+    'end': OLD_DATE_RANGE[1],
+    'coin': GOOD_COIN,
 }
 
 
@@ -119,3 +125,7 @@ class ViewIndexTestCase(TestCase):
     def test_index_bad_case(self):
         response = self.client.post(self.url, BAD_FORM)
         self.assertRegex(response.content.decode(), r'inv.lid.')
+
+    def test_index_old_bad_case(self):
+        response = self.client.post(self.url, OLD_FORM)
+        self.assertEqual(response.status_code, 200)
