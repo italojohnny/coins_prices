@@ -1,4 +1,5 @@
 from django import forms
+from datetime import date
 
 
 class FormIndex(forms.Form):
@@ -15,3 +16,7 @@ class FormIndex(forms.Form):
             ('jpy', 'Iene'),
         )
     )
+
+    def is_future_date(self, d):
+        if d > date.today():
+            return True
