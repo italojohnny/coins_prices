@@ -20,3 +20,7 @@ class FormIndex(forms.Form):
     def is_future_date(self, d):
         if d > date.today():
             return True
+
+    def is_date_reversed(self, d1, d2):
+        if d1 > d2:
+            return True
