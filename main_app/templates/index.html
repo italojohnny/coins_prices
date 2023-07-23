@@ -16,6 +16,9 @@
         <span>{{ form.end }}</span>
         <span><button type="submit" class="btn btn-primary">Consultar</button></span>
     </form>
+    {% if form.errors %}
+    <div>{{ form.non_field_errors }}<div>
+    {% endif %}
 </div>
 
 
