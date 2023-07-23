@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css">
+
     <style>
         .highcharts-figure,
         .highcharts-data-table table {
@@ -46,6 +48,13 @@
         .highcharts-data-table tr:hover {
             background: #f1f7ff;
         }
+        ul {
+            list-style-type: none;
+        }
+        li {
+            color: #f22;
+            font-family: sans-serif;
+        }
     </style>
 </head>
 <body>
@@ -54,7 +63,22 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/i18n/datepicker-pt-BR.js"></script>
+
     {% block content %}{% endblock %}
+
     {% block script %}{% endblock %}
+
+    <script>
+        $.datepicker.setDefaults($.datepicker.regional['pt-BR']);
+        $(document).ready(function() {
+            $(".datepicker").datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+        });
+    </script>
 </body>
 </html>

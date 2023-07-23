@@ -3,9 +3,25 @@
 {% block title %}coins prices{% endblock %}
 
 {% block content %}
+
 <figure class="highcharts-figure">
     <div id="container"></div>
 </figure>
+
+<div style="max-width: 600px; padding: auto; text-align: center; margin: auto;">
+    <form method="post">
+        {% csrf_token %}
+        <span>{{ form.coin }}</span>
+        <span>{{ form.begin }}</span>
+        <span>{{ form.end }}</span>
+        <span><button type="submit" class="btn btn-primary">Consultar</button></span>
+    </form>
+    {% if form.errors %}
+    <div>{{ form.non_field_errors }}<div>
+    {% endif %}
+</div>
+
+
 {% endblock %}
 
 {% block script %}
@@ -31,7 +47,7 @@
     xAxis: {
         categories: [
             {% for item in rates %}
-                '{{ item.date|date:"d/m/Y" }}',
+                '{{ item.date|date:"Y-m-d" }}',
             {% endfor %}
         ]
     },

@@ -1,6 +1,8 @@
-from django.test import TestCase
+from django.test import TestCase, Client
+from django.urls import reverse
 from . import utils
 from .models import RateModel
+from .forms import FormIndex
 from datetime import date, timedelta
 
 
@@ -14,6 +16,16 @@ GOOD_DATE = MONDAY
 BAD_DATE = SUNDAY
 GOOD_DATE_RANGE = (MONDAY, FRIDAY)
 BAD_DATE_RANGE = (MONDAY, MONDAY + timedelta(days=30))
+GOOD_FORM = {
+    'begin': GOOD_DATE_RANGE[0],
+    'end': GOOD_DATE_RANGE[1],
+    'coin': GOOD_COIN,
+}
+BAD_FORM = {
+    'begin': BAD_DATE_RANGE[0],
+    'end': BAD_DATE_RANGE[1],
+    'coin': BAD_COIN,
+}
 
 
 class RateModelTestCase(TestCase):
@@ -83,3 +95,27 @@ class UtilsTestCase(TestCase):
             GOOD_DATE,
             *BAD_DATE_RANGE,
         )
+
+
+class FormIndexTestCase(TestCase):
+    def test_good_case(self):
+        form = FormIndex(data=GOOD_FORM)
+        self.assertTrue(form.is_valid())
+
+    def test_bad_case(self):
+        form = FormIndex(data=BAD_FORM)
+        self.assertFalse(form.is_valid())
+
+
+class ViewIndexTestCase(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.url = reverse('index')
+
+    def test_index_good_case(self):
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_index_bad_case(self):
+        response = self.client.post(self.url, BAD_FORM)
+        self.assertRegex(response.content.decode(), r'inv.lid.')
