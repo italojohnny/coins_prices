@@ -10,7 +10,20 @@ def index(request):
     date1 = date2 - timedelta(days=4)
     rates = None
 
-    form = FormIndex(initial={'coin': coin_name})
+    if request.method == "POST":
+        form = FormIndex(request.POST)
+        if form.is_valid():
+            date1 = form.cleaned_data['begin']
+            date2 = form.cleaned_data['end']
+            coin_name = form.cleaned_data['coin']
+    else:
+        form = FormIndex(
+            initial={
+                'begin': date1.strftime(utils.DATE_FORMAT),
+                'end': date2.strftime(utils.DATE_FORMAT),
+                'coin': coin_name,
+            }
+        )
 
     rates = utils.get_rates(coin_name, date1, date2)
 
