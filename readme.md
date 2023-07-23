@@ -2,6 +2,10 @@
 Projeto para guardar e exbir cotacoes dos moedas real, euro e iene em dolar.
 
 
+### Link
+https://coins-prices.onrender.com/
+
+
 ### Tarefas
 - [x] Criar projeto basico
     - [x] iniciar repo git
@@ -30,4 +34,4 @@ Projeto para guardar e exbir cotacoes dos moedas real, euro e iene em dolar.
     - [x] testar form
     - [x] testar view
 - [x] Criar uma api para consultar dados armazenados
-- [ ] Deploy
+- [x] Deploy
