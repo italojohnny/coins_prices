@@ -6,10 +6,14 @@ from datetime import date
 
 class FormIndex(forms.Form):
     begin = forms.DateField(
-        widget=forms.DateInput(attrs={'class': 'datepicker'})
+        widget=forms.DateInput(
+            attrs={'class': 'datepicker', 'placeholder': 'Data Inicial'}
+        )
     )
     end = forms.DateField(
-        widget=forms.DateInput(attrs={'class': 'datepicker'})
+        widget=forms.DateInput(
+            attrs={'class': 'datepicker', 'placeholder': 'Data Final'}
+        )
     )
     coin = forms.ChoiceField(
         choices=(
