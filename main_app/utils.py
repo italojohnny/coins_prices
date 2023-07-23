@@ -15,6 +15,20 @@ class InvalidDateRange(Exception):
         return 'Date range is invalid!'
 
 
+def remove_duplicate(rates):
+    '''
+    Remove cotacoes repetidas
+    '''
+    cleaned_rates = list()
+    historic = list()
+    for rate in rates:
+        if rate['date'] not in historic:
+            historic.append(rate['date'])
+            cleaned_rates.append(rate)
+
+    return cleaned_rates
+
+
 def get_rates(coin_name, date1=None, date2=None):
     '''
     obtem cotacoes de uma moeda em um determinado intervalo de datas
@@ -27,7 +41,8 @@ def get_rates(coin_name, date1=None, date2=None):
     date_range = get_date_range(date1, date2)
     for d in date_range:
         result.append(get_rate(coin_name, d))
-    return result
+
+    return remove_duplicate(result)
 
 
 def get_date_range(date1, date2):
