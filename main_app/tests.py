@@ -15,6 +15,16 @@ GOOD_DATE = MONDAY
 BAD_DATE = SUNDAY
 GOOD_DATE_RANGE = (MONDAY, FRIDAY)
 BAD_DATE_RANGE = (MONDAY, MONDAY + timedelta(days=30))
+GOOD_FORM = {
+    'begin': GOOD_DATE_RANGE[0],
+    'end': GOOD_DATE_RANGE[1],
+    'coin': GOOD_COIN,
+}
+BAD_FORM = {
+    'begin': BAD_DATE_RANGE[0],
+    'end': BAD_DATE_RANGE[1],
+    'coin': BAD_COIN,
+}
 
 
 class RateModelTestCase(TestCase):
@@ -88,19 +98,9 @@ class UtilsTestCase(TestCase):
 
 class FormIndexTestCase(TestCase):
     def test_good_case(self):
-        form_data = {
-            'begin': GOOD_DATE_RANGE[0],
-            'end': GOOD_DATE_RANGE[1],
-            'coin': GOOD_COIN,
-        }
-        form = FormIndex(data=form_data)
+        form = FormIndex(data=GOOD_FORM)
         self.assertTrue(form.is_valid())
 
     def test_bad_case(self):
-        form_data = {
-            'begin': BAD_DATE_RANGE[0],
-            'end': BAD_DATE_RANGE[1],
-            'coin': BAD_COIN,
-        }
-        form = FormIndex(data=form_data)
+        form = FormIndex(data=BAD_FORM)
         self.assertFalse(form.is_valid())
