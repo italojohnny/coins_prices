@@ -7,6 +7,7 @@ from getter_rates import Currencies
 config = Config()
 COINS_ALLOWED = Currencies.__fields__.keys()
 MAX_DATA_RANGE = config.main_app.date_range
+DATE_FORMAT = '%Y-%m-%d'
 
 
 class InvalidDateRange(Exception):
