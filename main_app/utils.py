@@ -39,11 +39,11 @@ def get_date_range(date1, date2):
 
     current, last = min(date1, date2), max(date1, date2)
 
-    dates = list()
+    date_range = list()
     while current <= last:
-        dates.append(current)
+        date_range.append(current)
         current += timedelta(days=1)
-    return dates
+    return date_range
 
 
 def get_rate(coin_name, d):
