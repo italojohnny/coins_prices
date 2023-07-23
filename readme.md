@@ -26,7 +26,7 @@ Projeto para guardar e exbir cotacoes dos moedas real, euro e iene em dolar.
 - [ ] Adicionar form para consultar
     - [x] criar form
     - [x] exbir form no template
-    - [ ] criar validador do form
+    - [x] criar validador do form
     - [ ] testar form
     - [ ] testar view
 - [ ] Criar uma api para consultar dados armazenados
