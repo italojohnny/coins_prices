@@ -1,8 +1,11 @@
 from getter_rates import get_by_date
 from datetime import date, timedelta
 from coins_prices.config import Config
+from getter_rates import Currencies
+
 
 config = Config()
+COINS_ALLOWED = Currencies.__fields__.keys()
 MAX_DATA_RANGE = config.main_app.date_range
 
 
