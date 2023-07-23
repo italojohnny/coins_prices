@@ -2,6 +2,7 @@ from getter_rates import get_by_date
 from datetime import date, timedelta
 from coins_prices.config import Config
 from getter_rates import Currencies
+from .models import RateModel
 
 
 config = Config()
@@ -71,3 +72,13 @@ def get_rate(coin_name, d):
         'date': result.get('date'),
         'value': result.get(coin_name),
     }
+
+
+def get_rate_from_database(coin_name, d):
+    '''
+    obtem cotacao de uma moeda em uma determinada data
+    '''
+    result = RateModel.objects.filter(date=d).first()
+    if result:
+        return result.__dict__
+    return None
